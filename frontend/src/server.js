@@ -8,8 +8,9 @@ app.use(express.static(path.join('./', 'dist')));
 app.get('/contact', serverRoutes);
 
 // それ以外はクライアントサイドレンダリング用のファイルを返す
+// distにファイルがあればそれを返す。なかったらdist/index.htmlが返り、そこからmain.jsによってroutesが実行される
 app.get('*', function (req, res) {
-  res.sendFile(path.join('./', 'dist', 'index.html'))
+  res.sendFile(path.resolve('dist', 'index.html'));
 })
 app.listen(3000, ()=> {
   console.log('server running');
