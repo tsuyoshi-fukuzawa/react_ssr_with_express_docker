@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "server": "nodemon src/server.js  --exec babel-node",
+    "client": "webpack-dev-server --config ./config/webpack.config.dev.js",
+    "build": "webpack --config ./config/webpack.config.js --mode production",
+    "dev": "NODE_ENV=development concurrently \"npm run client\" \"npm run server\"",
+    "start": "NODE_ENV=production npm run build && npm run server"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "concurrently": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^2.0.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.1.2"
+  }
+}
