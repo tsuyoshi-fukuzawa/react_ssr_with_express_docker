@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import { Helmet } from "react-helmet";
 
 class Contact extends React.Component {
   constructor(props) {
@@ -19,6 +20,11 @@ class Contact extends React.Component {
   render() {
     return (
       <div>
+        <Helmet>
+          <title>My Title</title>
+          <meta name="description" content="Helmet application" />
+        </Helmet>
+
         <h2>Contact</h2>
         <p>お問い合わせページです。このページはSSRされます。</p>
         <p>counter: {this.state.counter}</p>

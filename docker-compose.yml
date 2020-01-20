@@ -1,0 +1,24 @@
+version: "3.5"
+services:
+  builder:
+    container_name: react_builder
+    build:
+      context: ./
+      dockerfile: ./etc/docker/frontend/Dockerfile
+      target: build-stage
+    volumes:
+      - ./frontend:/app:cached
+      - ./frontend/dist:/app/dist:z
+      - /app/node_modules
+  client:
+    container_name: react_server
+    build:
+      context: ./
+      dockerfile: ./etc/docker/frontend/Dockerfile
+      target: production-stage
+    volumes:
+      - ./frontend:/app:cached
+      - ./frontend/dist:/app/dist:z
+      - /app/node_modules
+    ports:
+      - 80:3000
