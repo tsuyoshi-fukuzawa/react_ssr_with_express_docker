@@ -7,7 +7,7 @@ import routes from "./routes/routes";
 const Index = () => {
   return (
     <BrowserRouter>
-      {routes[0].routes.map((route, index) => (
+      {routes.map((route, index) => (
         <Route path={route.path} component={route.component} exact={route.exact} key={index}/>
       ))}
     </BrowserRouter>

@@ -5,6 +5,7 @@ const app = express();
 app.use(express.static(path.join('./', 'dist')));
 
 // SSRに振りたいパスを記述していく
+// https://expressjs.com/ja/guide/routing.html
 app.get('/contact', serverRoutes);
 
 // それ以外はクライアントサイドレンダリング用のファイルを返す
