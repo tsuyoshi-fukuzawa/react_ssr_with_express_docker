@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import { Helmet } from "react-helmet";
+import { Status } from './status';
 
 class NotFound extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class NotFound extends React.Component {
   }
   render() {
     return (
-      <div>
+      <Status code={404}>
         <Helmet>
           <title>Page Not Found</title>
           <meta name="description" content="Helmet application" />
@@ -16,7 +17,7 @@ class NotFound extends React.Component {
 
         <h2>NotFound</h2>
         <p>お探しのページは見つかりませんでした。</p>
-      </div>
+      </Status>
     );
   }
 }

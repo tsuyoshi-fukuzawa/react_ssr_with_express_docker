@@ -30,7 +30,8 @@ app.use(express.static(path.join('./', 'dist')));
 
 // SSRに振りたいパスを記述していく
 // https://expressjs.com/ja/guide/routing.html
-app.get('/contact', serverRoutes);
+app.get('*', serverRoutes);
+// app.get('/contact', serverRoutes);
 
 // それ以外はクライアントサイドレンダリング用のファイルを返す
 // distにファイルがあればそれを返す。なかったらdist/index.htmlが返り、そこからmain.jsによってroutesが実行される
