@@ -1,6 +1,7 @@
 import Home from "../components/pages/home";
 import About from "../components/pages/about";
 import Contact from "../components/pages/contact";
+import NotFound from "../components/pages/errors/not_found";
 
 // 'react-router-config'を使用するため、以下のフォーマットでroutesを作る。
 const routes = [

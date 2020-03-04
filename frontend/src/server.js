@@ -2,6 +2,7 @@ import express from 'express';
 import log4js from 'log4js';
 import path from 'path';
 import { serverRoutes } from './routes/serverRoutes';
+import routes from './routes/routes';
 
 const app = express();
 const logger = log4js.getLogger();
@@ -30,13 +31,19 @@ app.use(express.static(path.join('./', 'dist')));
 
 // SSRに振りたいパスを記述していく
 // https://expressjs.com/ja/guide/routing.html
+// app.get('*', serverRoutes);
 app.get('/contact', serverRoutes);
 
-// それ以外はクライアントサイドレンダリング用のファイルを返す
+// routesに定義されているパスはクライアントサイドレンダリング用のファイルを返す
 // distにファイルがあればそれを返す。なかったらdist/index.htmlが返り、そこからmain.jsによってroutesが実行される
-app.get('*', function (req, res) {
-  res.sendFile(path.resolve('dist', 'index.html'));
-})
+routes.map((route, index) => (
+  app.get(route.path, (req, res) => {
+    res.sendFile(path.resolve('dist', 'index.html'));
+  })
+))
+// 残りは404やリダイレクトなのでSSRに戻す
+app.get('*', serverRoutes);
+
 app.listen(3000, ()=> {
   console.log('server has been loaded');
 })
