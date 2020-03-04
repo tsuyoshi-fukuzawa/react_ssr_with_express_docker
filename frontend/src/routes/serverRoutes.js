@@ -18,6 +18,8 @@ serverRoutes.get('*', (req, res) => {
       ))}
     </StaticRouter>
   )
+  console.log(context)
+
   // renderToString内のRouteでHelmetにデータを入れているので、ここで取得できる
   const helmet = Helmet.renderStatic();
   const html = `
@@ -29,6 +31,7 @@ serverRoutes.get('*', (req, res) => {
         ${helmet.link.toString()}
       </head>
       <body ${helmet.bodyAttributes.toString()}>
+        ${JSON.stringify(context)}
         <div id="index">${app}</div>
         <script type="text/javascript" src="main.js"></script>
         </body>

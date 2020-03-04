@@ -4,10 +4,12 @@ import { Helmet } from "react-helmet";
 
 class Contact extends React.Component {
   constructor(props) {
+    // props.staticContext.data = 1
     super()
     this.state = {
       counter: 0
     }
+    console.log(props);
     this.doAction = this.doAction.bind(this);
   }
 
