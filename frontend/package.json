@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "log4js": "^6.1.0",
+    "log4js": "^6.4.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
